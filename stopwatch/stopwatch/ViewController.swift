@@ -31,6 +31,7 @@ class ViewController: UIViewController {
     }
     
     @objc func resetTimer(){
+        timer?.invalidate()
         self.timerNum = 0.0
         self.numberLabel.text = "\(self.timerNum)"
     }
