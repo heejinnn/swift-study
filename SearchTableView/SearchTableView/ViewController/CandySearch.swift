@@ -113,7 +113,7 @@ extension CandySearch: UITextFieldDelegate{
       func filterText(_ query : String){
           filterData.removeAll()//중복 제거
           
-          //입력된 text가 nameArray의 name과 일치한다면 filterData에 추가
+          //입력된 text가 name과 일치한다면 filterData에 추가
           
           if segmentData.count != 0{
               for array in segmentData {
