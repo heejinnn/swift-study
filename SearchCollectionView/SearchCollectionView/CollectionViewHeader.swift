@@ -9,21 +9,12 @@ class CollectionViewHeader: UICollectionReusableView {
         return label
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
+    func initHeader() {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
-           make.top.equalToSuperview().offset(50)
-           make.centerX.equalToSuperview()
-       }
+            make.top.equalToSuperview().offset(50)
+            make.centerX.equalToSuperview()
+        }
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
 }
-
-  
 

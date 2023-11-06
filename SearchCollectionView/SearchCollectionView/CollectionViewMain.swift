@@ -22,7 +22,7 @@ class CollectionViewMain: UIViewController {
         organizeDataIntoSections()
 
         collectionView.register(CollectionViewMainCell.self, forCellWithReuseIdentifier: "CollectionViewMainCell")
-        collectionView.register(CollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderView")
+        collectionView.register(CollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderView")//섹션 헤더 등록
 
         initView()
     }
@@ -108,7 +108,7 @@ class CollectionViewMain: UIViewController {
         }
         
         UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
+            self.view.layoutIfNeeded()//즉시 업데이트
         }
     
     }
@@ -122,6 +122,8 @@ extension CollectionViewMain: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewMainCell", for: indexPath) as! CollectionViewMainCell
+        cell.initCell()
+        
         let sectionName = Array(sectionData.keys)[indexPath.section]
         let imageData = sectionData[sectionName]?[indexPath.row]
         cell.cellImage.image = imageData?.image
@@ -139,6 +141,7 @@ extension CollectionViewMain: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderView", for: indexPath) as! CollectionViewHeader
+            headerView.initHeader()
 
             let sectionName = Array(sectionData.keys)[indexPath.section]
             headerView.titleLabel.text = sectionName
@@ -159,10 +162,10 @@ extension CollectionViewMain: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) {
             if selectedItems[indexPath] == true {
-                // Deselect the cell
+                // Deselect
                 selectedItems[indexPath] = false
             } else {
-                // Select the cell
+                // Select
                 selectedItems[indexPath] = true
             }
             collectionView.reloadItems(at: [indexPath])
@@ -196,10 +199,11 @@ extension CollectionViewMain: UICollectionViewDelegateFlowLayout {
 extension CollectionViewMain: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let searchText = textField.text, !searchText.isEmpty {
-            for (section, data) in sectionData {
-                if section.lowercased() == searchText.lowercased() {
+            for (section, _ ) in sectionData {
+                if section.lowercased() == searchText.lowercased() {//대소문자 구분없이
                     if let sectionIndex = Array(sectionData.keys).firstIndex(of: section) {
                         let indexPath = IndexPath(item: 0, section: sectionIndex)
+                        print(sectionIndex)
                         
                         collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
                     }
@@ -207,7 +211,7 @@ extension CollectionViewMain: UITextFieldDelegate {
             }
         }
         
-        textField.resignFirstResponder()
+        textField.resignFirstResponder()//키보드 내리기
         return true
     }
 }
