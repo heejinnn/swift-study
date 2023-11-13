@@ -9,7 +9,7 @@ class CollectionViewMain: UIViewController {
     
     var sectionData: [String: [ImageData]] = [:]
     var selectedItems: [IndexPath: Bool] = [:]
-    let data: [ImageData] = ImageData.list
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +62,7 @@ class CollectionViewMain: UIViewController {
             make.width.equalTo(150)
             make.centerX.equalToSuperview()
         }
+        
         seletecItemCount.snp.makeConstraints{make in
             make.top.equalToSuperview().offset(60)
             make.height.equalTo(40)
@@ -110,7 +111,7 @@ class CollectionViewMain: UIViewController {
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()//즉시 업데이트
         }
-    
+
     }
 }
 
