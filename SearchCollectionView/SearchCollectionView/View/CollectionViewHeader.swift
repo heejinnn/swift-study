@@ -11,7 +11,7 @@ class CollectionViewHeader: UICollectionReusableView {
     
     func initHeader() {
         addSubview(titleLabel)
-        
+        titleLabel.textAlignment = .center
         
         titleLabel.snp.makeConstraints { make in
 

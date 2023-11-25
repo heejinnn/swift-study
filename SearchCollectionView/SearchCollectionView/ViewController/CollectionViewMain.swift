@@ -113,6 +113,19 @@ class CollectionViewMain: UIViewController {
         }
         
     }
+    @objc func headerViewTapped(_ gestureRecognizer: UITapGestureRecognizer) {
+        if let headerView = gestureRecognizer.view as? CollectionViewHeader {
+            
+            UIView.animate(withDuration: 1.0, animations: {
+                headerView.titleLabel.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+            }) { (_) in
+                UIView.animate(withDuration: 1.0) {
+                    headerView.titleLabel.transform = CGAffineTransform.identity
+                }
+            }
+            
+        }
+    }
 }
 
 extension CollectionViewMain: UICollectionViewDataSource {
@@ -146,6 +159,9 @@ extension CollectionViewMain: UICollectionViewDataSource {
 
             let sectionName = Array(sectionData.keys)[indexPath.section]
             headerView.titleLabel.text = sectionName
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(headerViewTapped(_:)))
+                   headerView.addGestureRecognizer(tapGesture)
             
           
             return headerView
