@@ -11,7 +11,10 @@ class CollectionViewHeader: UICollectionReusableView {
     
     func initHeader() {
         addSubview(titleLabel)
+        
+        
         titleLabel.snp.makeConstraints { make in
+
             make.top.equalToSuperview().offset(50)
             make.centerX.equalToSuperview()
         }

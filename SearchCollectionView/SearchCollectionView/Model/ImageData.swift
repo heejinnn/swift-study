@@ -14,7 +14,9 @@ extension ImageData{
         ImageData(imageName: "green", image: UIImage(named: "green")!, sectionName: "Section1"),
         ImageData(imageName: "pink", image: UIImage(named: "pink")!, sectionName: "Section2"),
         ImageData(imageName: "navy", image: UIImage(named: "navy")!, sectionName: "Section2"),
-        ImageData(imageName: "yellow", image: UIImage(named: "yellow")!, sectionName: "Section3")
+        ImageData(imageName: "yellow", image: UIImage(named: "yellow")!, sectionName: "Section3"),
+        ImageData(imageName: "yellow", image: UIImage(named: "yellow")!, sectionName: "Section4"),
+        ImageData(imageName: "navy", image: UIImage(named: "navy")!, sectionName: "Section4")
     ]
 }
 

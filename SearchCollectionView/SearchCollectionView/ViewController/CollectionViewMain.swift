@@ -92,14 +92,14 @@ class CollectionViewMain: UIViewController {
             seletecItemCount.text = "\(count) photo selected"
             
             searchInputText.snp.remakeConstraints { make in
-               make.top.equalToSuperview().offset(60)
-               make.height.equalTo(40)
-               make.width.equalTo(150)
-               make.leading.equalTo(view.snp.leading).offset(50)
+                make.top.equalToSuperview().offset(60)
+                make.height.equalTo(40)
+                make.width.equalTo(150)
+                make.leading.equalTo(view.snp.leading).offset(50)
             }
         }else{
             seletecItemCount.text = ""
-                   
+            
             searchInputText.snp.remakeConstraints { make in
                 make.top.equalToSuperview().offset(60)
                 make.height.equalTo(40)
@@ -111,7 +111,7 @@ class CollectionViewMain: UIViewController {
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()//즉시 업데이트
         }
-
+        
     }
 }
 
@@ -146,7 +146,8 @@ extension CollectionViewMain: UICollectionViewDataSource {
 
             let sectionName = Array(sectionData.keys)[indexPath.section]
             headerView.titleLabel.text = sectionName
-
+            
+          
             return headerView
             
         } else {
@@ -204,15 +205,23 @@ extension CollectionViewMain: UITextFieldDelegate {
                 if section.lowercased() == searchText.lowercased() {//대소문자 구분없이
                     if let sectionIndex = Array(sectionData.keys).firstIndex(of: section) {
                         let indexPath = IndexPath(item: 0, section: sectionIndex)
-                        print(sectionIndex)
                         
-                        collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
+//                        collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
+                    
+                        //섹션 헤더 위치로 스크롤
+                        if let attributes = collectionView.layoutAttributesForSupplementaryElement(ofKind: UICollectionView.elementKindSectionHeader, at: indexPath) {
+
+                            let offsetY = attributes.frame.origin.y - collectionView.contentInset.top
+
+                            collectionView.setContentOffset(CGPoint(x: 0, y: offsetY), animated: true)
+                        }
                     }
+                    
                 }
             }
         }
         
         textField.resignFirstResponder()//키보드 내리기
-        return true
+        return false
     }
 }

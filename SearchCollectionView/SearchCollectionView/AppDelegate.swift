@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  SearchCollectionView
-//
-//  Created by 최희진 on 2023/11/05.
-//
-
 import UIKit
 
 @main
