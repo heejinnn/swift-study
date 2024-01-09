@@ -1,9 +1,3 @@
-//
-//  ViewController.swift
-//  ImageSearch
-//
-//  Created by 최희진 on 2024/01/09.
-//
 
 import UIKit
 import SnapKit
@@ -24,6 +18,8 @@ class ViewController: UIViewController {
         
         initView()
         imageSearchTextField.delegate = self
+        
+        imageSearchTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
     func initView(){
@@ -68,15 +64,8 @@ class ViewController: UIViewController {
             make.height.equalTo(1)
         }
     }
-
-}
-
-extension ViewController: UITextFieldDelegate{
     
-    //enter 키 누를 때
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()//enter 키 누를 때 키보드 닫기
-        
+    @objc func textFieldDidChange(_ textField: UITextField) {
         if let enteredText = textField.text?.lowercased() {
             if let imageData = imagedata.first(where: { $0.name.lowercased() == enteredText }) {
                 imageView.image = imageData.image
@@ -84,7 +73,23 @@ extension ViewController: UITextFieldDelegate{
                 imageView.image = nil
             }
         }
-        
-        return true
     }
+}
+
+extension ViewController: UITextFieldDelegate{
+
+//    //enter 키 눌렀을 때 작동
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()//enter 키 누를 때 키보드 닫기
+//
+//        if let enteredText = textField.text?.lowercased() {
+//            if let imageData = imagedata.first(where: { $0.name.lowercased() == enteredText }) {
+//                imageView.image = UIImage(named: textField.text!.lowercased())
+//            } else {
+//                imageView.image = nil
+//            }
+//        }
+//
+//        return true
+//    }
 }
