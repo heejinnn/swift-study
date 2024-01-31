@@ -13,6 +13,7 @@
 		4AEAC5432B6AA1D000025A8C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AEAC5422B6AA1D000025A8C /* Preview Assets.xcassets */; };
 		4AEAC54A2B6AA79A00025A8C /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEAC5492B6AA79A00025A8C /* ImagePickerView.swift */; };
 		4AEAC54C2B6AAAAF00025A8C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEAC54B2B6AAAAF00025A8C /* UserModel.swift */; };
+		4AEAC54E2B6AB4F800025A8C /* RegisteredUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEAC54D2B6AB4F800025A8C /* RegisteredUserView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		4AEAC5422B6AA1D000025A8C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4AEAC5492B6AA79A00025A8C /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		4AEAC54B2B6AAAAF00025A8C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		4AEAC54D2B6AB4F800025A8C /* RegisteredUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredUserView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			children = (
 				4AEAC53B2B6AA1CF00025A8C /* ImagePickerExampleApp.swift */,
 				4AEAC53D2B6AA1CF00025A8C /* UserProfileView.swift */,
+				4AEAC54D2B6AB4F800025A8C /* RegisteredUserView.swift */,
 				4AEAC5492B6AA79A00025A8C /* ImagePickerView.swift */,
 				4AEAC54B2B6AAAAF00025A8C /* UserModel.swift */,
 				4AEAC53F2B6AA1D000025A8C /* Assets.xcassets */,
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AEAC53E2B6AA1CF00025A8C /* UserProfileView.swift in Sources */,
+				4AEAC54E2B6AB4F800025A8C /* RegisteredUserView.swift in Sources */,
 				4AEAC53C2B6AA1CF00025A8C /* ImagePickerExampleApp.swift in Sources */,
 				4AEAC54C2B6AAAAF00025A8C /* UserModel.swift in Sources */,
 				4AEAC54A2B6AA79A00025A8C /* ImagePickerView.swift in Sources */,

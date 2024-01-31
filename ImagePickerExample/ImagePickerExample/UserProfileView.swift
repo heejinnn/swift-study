@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct UserProfileView: View {
-    
+   // @StateObject private var userDataStore = UserDataStore()
     @State private var imagePickerPresented = false
     @State private var selectedImage: UIImage?
     @State private var userData: UserData = UserData(name: "", profileImage: nil)
@@ -11,6 +11,7 @@ struct UserProfileView: View {
     
     var body: some View {
         NavigationView {
+            
             VStack(alignment: .center, spacing: 20) {
                 Button(action: {
                     imagePickerPresented.toggle()
@@ -28,14 +29,13 @@ struct UserProfileView: View {
             .padding(.top, 50)
             .navigationBarTitle("User Profile", displayMode: .inline)
             .navigationBarItems(trailing:
-                                    NavigationLink(destination: Text("Settings")) {
-                Button(action: {
-                    print(userData)
-                }, label: {
+       
+                                    NavigationLink(destination: RegisteredUserView(userData: userData)) {
                     Text("Sign Up")
-                })
-            }
+                }
+           
             )
+            
             .sheet(isPresented: $imagePickerPresented) {
                 ImagePickerView(selectedImage: $userData.profileImage, presentationMode: _presentationMode)
             }
