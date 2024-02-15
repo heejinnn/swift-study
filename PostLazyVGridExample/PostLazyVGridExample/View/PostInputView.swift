@@ -12,16 +12,16 @@ struct PostInputView: View {
     var body: some View {
         
         ZStack {
-            Color.gray.opacity(0.3).edgesIgnoringSafeArea(.bottom) // 배경색 적용
+            Color.gray.opacity(0.1).edgesIgnoringSafeArea(.bottom) // 배경색 적용
             
-            VStack(alignment: .center, spacing: 20) {
+            VStack(alignment: .center, spacing: 40) {
                 Button(action: {
                     imagePickerPresented.toggle()
                 }, label: {
                     let image =  selectedImage == nil ? Image(systemName: "person.circle.fill") : Image(uiImage: selectedImage!)
                     image
                         .resizable()
-                        .frame(width: 100, height: 100)
+                        .frame(width: 150, height: 150)
                         .clipShape(Circle())
                 })
                 ZStack(alignment: .topLeading) {
