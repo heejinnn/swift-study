@@ -8,39 +8,49 @@ struct PostMainView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 180, maximum: 180))], spacing: 20) {
-                    ForEach(postData.sample, id: \.0) { content, imageData in
-                        VStack {
-                            Image(systemName: imageData)
-                                .resizable()
-                                .frame(maxWidth: .infinity, maxHeight: 180)
-                            
-                            Text(content)
-                                .padding(.horizontal, 10)
-                                .padding(.vertical, 10)
-                            
+                HStack(alignment: .top, spacing: 10) {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 180, maximum: 180))], spacing: 20) {
+                        ForEach(postData.data.indices.filter { $0 % 2 == 0 }, id: \.self) { index in
+                            let (content, imageData) = postData.data[index]
+                            VStack {
+                                Image(uiImage: imageData!)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(maxWidth: 180, maxHeight: 180)
+                                
+                                Text(content)
+                                    .padding(.horizontal, 10)
+                                    .padding(.vertical, 10)
+                                
+                            }
+                            .background(Color.white)
+                            .cornerRadius(10)
                         }
-                        .background(.white)
-                        .cornerRadius(10)
                     }
                     
-                    ForEach(postData.data, id: \.0) { content, imageData in
-                        VStack {
-                            Image(uiImage: imageData!)
-                                .resizable()
-                                .frame(maxWidth: .infinity, maxHeight: 180)
-                            
-                            Text(content)
-                                .padding(.horizontal, 10)
-                                .padding(.vertical, 10)
-                            
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 180, maximum: 180))], spacing: 20) {
+                        ForEach(postData.data.indices.filter { $0 % 2 != 0 }, id: \.self) { index in
+                            let (content, imageData) = postData.data[index]
+                            VStack {
+                                Image(uiImage: imageData!)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(maxWidth: 180, maxHeight: 180)
+                                
+                                Text(content)
+                                    .padding(.horizontal, 10)
+                                    .padding(.vertical, 10)
+                                
+                            }
+                            .background(Color.white)
+                            .cornerRadius(10)
                         }
-                        .background(.white)
-                        .cornerRadius(10)
                     }
                 }
             }
             .padding(.top, 20)
+            .padding(.leading, 10)
+            .padding(.trailing, 10)
             .background(Color.gray.opacity(0.1).edgesIgnoringSafeArea(.bottom))
             .navigationBarTitle(Text("PostMain"), displayMode: .inline)
             .navigationBarItems(trailing:
