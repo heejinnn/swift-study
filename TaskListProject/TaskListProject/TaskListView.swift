@@ -2,19 +2,19 @@
 import SwiftUI
 
 struct TaskListView: View {
-    var tasks: [String]
+    var tasks: [Task]
     var onDelete: ((IndexSet) -> Void)?
        
     var body: some View {
         List {
-            ForEach(tasks, id: \.self) { task in
+            ForEach(tasks.indices, id: \.self) { index in
                 VStack(alignment: .leading) {
-                    Text(task)
+                    Text(tasks[index].name)
                         .font(.subheadline)
-                    Text("Due date: ")
+                    Text("Due date: \(tasks[index].dueDate)")
                         .font(.system(size: 14))
                         .foregroundColor(.gray)
-                    Text("Status:  ")
+                    Text("Status:  \(tasks[index].status)")
                         .font(.subheadline)
                         .foregroundColor(.gray)
                 }

@@ -5,26 +5,26 @@ import SwiftUI
 struct EditTaskListView: View {
     @State var date = Date()
     @State private var selected = "Not started"
-    var tasks: [String]
+    @State var tasks: [Task]
     var onEdit: (() -> Void)?
     
     var body: some View {
         List {
-            ForEach(tasks, id: \.self) { task in
+            ForEach(tasks.indices, id: \.self) { index in
                 VStack(alignment: .leading) {
-                    Text(task)
+                    Text(tasks[index].name)
                     HStack{
                         Text("Due date ")
                             .font(.subheadline)
                             .foregroundColor(.gray)
                         DatePicker(
                             "",
-                            selection: $date,
+                            selection: $tasks[index].dueDate,
                             displayedComponents: [.date]
                         )
                     }
                    
-                    Picker("Choose course", selection: $selected) {
+                    Picker("Choose course", selection: $tasks[index].status) {
                         Text("Not started")
                             .tag("Not started")
                         Text("In progress")

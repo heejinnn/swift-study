@@ -3,7 +3,11 @@
 import SwiftUI
 
 struct TaskMainView: View {
-    @State private var tasks = [ "Task1", "Task2", "Task3"]
+    @State private var tasks = [
+        Task(name: "Task 1", dueDate: Date(), status: "Not started"),
+        Task(name: "Task 2", dueDate: Date(), status: "In progress"),
+        Task(name: "Task 3", dueDate: Date(), status: "Complete")
+    ]
     @State private var isEditing = false
     @State private var isAdding = true
 
@@ -19,7 +23,7 @@ struct TaskMainView: View {
                         .navigationBarItems(trailing:
                                                 HStack {
                                                     Button(action: {
-                                                        tasks.append("New Task")
+                                                        tasks.append(Task(name: "new Task", dueDate: Date(), status: "Not started"))
                                                     }) {
                                                         Image(systemName: "plus")
                                                     }
@@ -34,6 +38,8 @@ struct TaskMainView: View {
                 }
             }
             .navigationTitle("Tasks")
+            .navigationBarTitleDisplayMode(.inline)
+            
         }
     }
 
