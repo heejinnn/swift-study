@@ -3,11 +3,7 @@
 import SwiftUI
 
 struct TaskMainView: View {
-    @State private var tasks = [
-        Task(name: "Task 1", dueDate: Date(), status: "Not started"),
-        Task(name: "Task 2", dueDate: Date(), status: "In progress"),
-        Task(name: "Task 3", dueDate: Date(), status: "Complete")
-    ]
+    @ObservedObject var taskList = TaskList()
     @State private var isEditing = false
     @State private var isAdding = true
 
@@ -15,15 +11,23 @@ struct TaskMainView: View {
         NavigationView {
             VStack {
                 if isEditing {
-                    EditTaskListView(tasks: tasks, onEdit: {
-                        isEditing.toggle()
-                    })
-                } else {
-                    TaskListView(tasks: tasks, onDelete: deleteTask)
+                    EditTaskListView(tasks: $taskList.tasks)
                         .navigationBarItems(trailing:
                                                 HStack {
                                                     Button(action: {
-                                                        tasks.append(Task(name: "new Task", dueDate: Date(), status: "Not started"))
+                                                        isEditing.toggle()
+                                                    }) {
+                                                        Text("Done")
+                                                    }
+                                                }
+                        )
+                    
+                } else {
+                    TaskListView(tasks: $taskList.tasks, onDelete: deleteTask)
+                        .navigationBarItems(trailing:
+                                                HStack {
+                                                    Button(action: {
+                                                        taskList.tasks.append(Task(name: "new Task", dueDate: Date(), status: "Not started"))
                                                     }) {
                                                         Image(systemName: "plus")
                                                     }
@@ -38,13 +42,12 @@ struct TaskMainView: View {
                 }
             }
             .navigationTitle("Tasks")
-            .navigationBarTitleDisplayMode(.inline)
             
         }
     }
 
     private func deleteTask(at offsets: IndexSet) {
-        tasks.remove(atOffsets: offsets)
+        taskList.tasks.remove(atOffsets: offsets)
     }
 }
 

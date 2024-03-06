@@ -3,18 +3,15 @@
 import SwiftUI
 
 struct EditTaskListView: View {
-    @State var date = Date()
-    @State private var selected = "Not started"
-    @State var tasks: [Task]
-    var onEdit: (() -> Void)?
+    @Binding var tasks: [Task]
     
     var body: some View {
         List {
             ForEach(tasks.indices, id: \.self) { index in
                 VStack(alignment: .leading) {
-                    Text(tasks[index].name)
+                    TextField(tasks[index].name, text: $tasks[index].name)
                     HStack{
-                        Text("Due date ")
+                        Text("Due date")
                             .font(.subheadline)
                             .foregroundColor(.gray)
                         DatePicker(
@@ -24,7 +21,7 @@ struct EditTaskListView: View {
                         )
                     }
                    
-                    Picker("Choose course", selection: $tasks[index].status) {
+                    Picker("", selection: $tasks[index].status) {
                         Text("Not started")
                             .tag("Not started")
                         Text("In progress")
@@ -36,14 +33,5 @@ struct EditTaskListView: View {
                 }
             }
         }
-        .navigationBarItems(trailing:
-                                HStack {         
-                                    Button(action: {
-                                        onEdit?()
-                                    }) {
-                                        Text("Done")
-                                    }
-                                }
-        )
     }
 }
