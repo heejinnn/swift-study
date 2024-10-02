@@ -9,14 +9,15 @@ struct PostMainView: View {
         NavigationView {
             ScrollView {
                 HStack(alignment: .top, spacing: 10) {
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 180, maximum: 180))], spacing: 20) {
+                    LazyVGrid(columns: [GridItem(.flexible(minimum: 180, maximum: .infinity))], spacing: 20) {
                         ForEach(postData.data.indices.filter { $0 % 2 == 0 }, id: \.self) { index in
                             let (content, imageData) = postData.data[index]
                             VStack {
                                 Image(uiImage: imageData!)
                                     .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(maxWidth: 180, maxHeight: 180)
+                                    //.aspectRatio(contentMode: .fit)
+                                    .scaledToFit()
+                                    .frame(maxWidth: .infinity, maxHeight: 180)
                                 
                                 Text(content)
                                     .padding(.horizontal, 10)

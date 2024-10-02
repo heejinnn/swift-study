@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4ABB93422B7BF7AB00E1EA73 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB93412B7BF7AB00E1EA73 /* PopupView.swift */; };
 		4AE2940C2B716B0500920C0B /* TodoListExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE2940B2B716B0500920C0B /* TodoListExampleApp.swift */; };
 		4AE2940E2B716B0500920C0B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE2940D2B716B0500920C0B /* ContentView.swift */; };
 		4AE294102B716B0700920C0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AE2940F2B716B0700920C0B /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4ABB93412B7BF7AB00E1EA73 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		4AE294082B716B0500920C0B /* TodoListExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoListExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AE2940B2B716B0500920C0B /* TodoListExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListExampleApp.swift; sourceTree = "<group>"; };
 		4AE2940D2B716B0500920C0B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				4AE294192B71713D00920C0B /* TodoListRow.swift */,
 				4AE2940F2B716B0700920C0B /* Assets.xcassets */,
 				4AE294112B716B0700920C0B /* Preview Content */,
+				4ABB93412B7BF7AB00E1EA73 /* PopupView.swift */,
 			);
 			path = TodoListExample;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AE2940E2B716B0500920C0B /* ContentView.swift in Sources */,
+				4ABB93422B7BF7AB00E1EA73 /* PopupView.swift in Sources */,
 				4AE2941A2B71713D00920C0B /* TodoListRow.swift in Sources */,
 				4AE2940C2B716B0500920C0B /* TodoListExampleApp.swift in Sources */,
 			);
