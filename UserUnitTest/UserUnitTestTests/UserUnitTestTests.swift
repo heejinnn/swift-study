@@ -114,13 +114,4 @@ final class UserUnitTestTests: XCTestCase {
         XCTAssertNil(retrievedUser)//값이 nil인 경우(유저 존재 x)
         
     }
-    
-
-//    func testPerformanceExample() throws {
-//        self.measure {
-//            testAddValidUser()
-//            testAddUserWithInvalidEmail()
-//            testAddDuplicateUser()
-//        }
-//    }
 }
